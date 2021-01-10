@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using System.IO;
 using System.Linq;
 using Microsoft.AspNetCore.Builder;
@@ -47,6 +48,8 @@ namespace predictor
                     var predictionManager = app.ApplicationServices.GetService<PredictionManager>();
                     predictionManager.AddPrediction(prediction);
                     context.Response.Redirect($"/predictionPage");
+
+                    await Task.Run(() => {});
                 });
 
                 endpoints.MapGet("/getprediction", async context => {
