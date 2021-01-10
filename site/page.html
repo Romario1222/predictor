@@ -1,0 +1,27 @@
+<html>
+    <!-- for russian symbols -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+    <div align="center">    
+        <h1 style="color:blue;">Анонимные предсказания онлайн</h1>
+        Введите ваше предсказание чтобы получить своё
+        <br>
+        <br>
+        <input id="prediction"></input>
+        <br>
+        <br>
+        <button id="submitButton">Ok</button>
+    </div>
+
+    <script>
+        var el = document.getElementById("submitButton");
+        el.addEventListener("click", modifyText, false);
+
+        async function modifyText(){
+            var predictionInput = document.getElementById("prediction")
+            let response = await fetch(`/addprediction?prediction=${predictionInput.value}`)
+            if(response.ok){
+                window.location = response.url
+            }
+        }
+    </script>
+</html>
