@@ -3,12 +3,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
     <div align="center">    
         <h1 style="color:blue;">Анонимные предсказания онлайн</h1>
-        Введите ваше предсказание чтобы получить своё
+        Введите ваше предсказание, чтобы получить своё
         <br>
         <br>
-        <input id="prediction"></input>
-        <br>
-        <br>
+        <input id="prediction" maxlength = "200"></input> <h4 id="symbolsCounter">Осталось 200 символов<h4>
         <button id="submitButton">Ok</button>
     </div>
 
@@ -22,6 +20,14 @@
             if(response.ok){
                 window.location = response.url
             }
+        }
+
+        var predictionel = document.getElementById("prediction");
+        predictionel.onkeyup = () => modifyCounter()
+
+        async function modifyCounter(){
+            var predictionInput = document.getElementById("symbolsCounter")
+            predictionInput.innerText = "Осталось "  + (200 - predictionel.value.length) + " символов"
         }
     </script>
 </html>
