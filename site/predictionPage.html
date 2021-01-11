@@ -1,11 +1,33 @@
 <html>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-    <div align="center">    
-        <h1 style="color:blue;">Ваше предсказание</h1>
-        <br>
-        <h3 id="prediction"></h3>
-        <br>
-    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/pizza_1f355.png">
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+        <title>Предсказания онлайн!</title>
+    </head>
+    <body style="background-color: rgb(59, 57, 57);">
+        <nav class="navbar navbar-light bg-dark">
+            <a class="navbar-brand" style="color: bisque; margin-left: 15px;" href="#">
+            🎱 Анонимные предсказания онлайн
+            </a>
+        </nav>
+        <div style="position: absolute;
+        top: 40%;
+        left: 30%;
+        width: 40%;
+        height: 100px;">    
+            <h1 style="color:bisque;">Ваше предсказание:</h1>
+            <h3 style="color:rgb(246, 207, 158);" id="prediction"></h3>
+            <br>
+            <h4 style="color:rgb(246, 207, 158); text-align: right;" id="prediction">Харуки Мураками</h4>
+        </div>
+    </body>
+
 
     <script>
         window.onload = async () => {
@@ -17,3 +39,28 @@
         }
     </script>
 </html>
+
+<!-- <html>
+
+    <body style="background-color: rgb(59, 57, 57);">
+        <nav class="navbar navbar-light bg-dark">
+            <a class="navbar-brand" style="color: bisque; margin-left: 15px;" href="#">
+            🎱 Анонимные предсказания онлайн
+            </a>
+        </nav>
+        <div style="position: absolute;
+        top: 40%;
+        left: 30%;
+        width: 40%;
+        height: 100px;">
+            <div class="input-group mb-3">
+                <input id="prediction" maxlength = "200" type="text" class="form-control" placeholder="Введите ваше предсказание, чтобы получить своё" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" id="submitButton" type="button">✔</button>
+                </div>
+            </div>
+            <h4 id="symbolsCounter" style="text-align: center; color: bisque;">Осталось 200 символов<h4>
+        </div>
+
+    </body>
+</html> -->
