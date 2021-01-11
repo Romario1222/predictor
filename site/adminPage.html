@@ -19,7 +19,7 @@
                 resp.split("\n").forEach(element => {
                     let pred = document.getElementById("predictions")
                     let div = document.createElement('div');
-                    div.innerHTML = `<h3>${element} <button>+</button> <button>-</button><h3> `;
+                    div.innerHTML = `<h3>${element} <button>Подвергнуть цензуре (🗑️)</button><h3> `;
                     pred.appendChild(div);        
                 });
             }
