@@ -33,5 +33,9 @@ namespace predictor
             string prediction = predictions[predictionNumber];
             return prediction;
         }
+
+        public List<string> GetCurrentPredictions(){
+            return predictions;
+        }
     } 
 }

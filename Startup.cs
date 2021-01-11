@@ -56,6 +56,16 @@ namespace predictor
                     var predictionManager = app.ApplicationServices.GetService<PredictionManager>();
                     await context.Response.WriteAsync(predictionManager.GetRandomPrediction());
                 });
+
+                endpoints.MapGet("/currentpredictions", async context => {
+                    var predictionManager = app.ApplicationServices.GetService<PredictionManager>();
+                    await context.Response.WriteAsync(string.Join("\n", predictionManager.GetCurrentPredictions()));
+                });
+
+                endpoints.MapGet("/admin", async context => {
+                    string page = await File.ReadAllTextAsync("site/adminPage.html");
+                    await context.Response.WriteAsync(page);
+                });
             });
         }
     }

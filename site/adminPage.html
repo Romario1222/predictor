@@ -1,0 +1,28 @@
+<html>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+    <div  align="center">    
+        <h1 style="color:blue;">Список всех текущих предсказаний</h1>
+        <br>
+        <div id = "predictions"></div>
+        <br>
+        <button>Сохранить текущий список</button>
+
+    </div>
+
+    <script>
+        window.onload = async () => {
+            let response = await fetch(`/currentpredictions`)
+            if(response.ok){
+                var prediction = document.getElementById("prediction")
+                var resp = await response.text()
+                
+                resp.split("\n").forEach(element => {
+                    let pred = document.getElementById("predictions")
+                    let div = document.createElement('div');
+                    div.innerHTML = `<h3>${element} <button>+</button> <button>-</button><h3> `;
+                    pred.appendChild(div);        
+                });
+            }
+        }
+    </script>
+</html>
