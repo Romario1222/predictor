@@ -1,13 +1,31 @@
 <html>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-    <div  align="center">    
-        <h1 style="color:blue;">Список всех текущих предсказаний</h1>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/271/pizza_1f355.png">
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+        <title>Предсказания онлайн!</title>
+    </head>
+    <meta charset="utf-8">
+    <body style="background-color: rgb(59, 57, 57);">
+        <nav class="navbar navbar-light bg-dark">
+            <a class="navbar-brand" style="color: bisque; margin-left: 15px;" href="#">
+            🎱 Админка
+            </a>
+        </nav>
+        <div align="center">
+        <h1 style="color:bisque;">Список всех текущих предсказаний</h1>
         <br>
         <div id = "predictions"></div>
         <br>
         <button>Сохранить текущий список</button>
+        </div>
 
-    </div>
+    </body>
 
     <script>
         window.onload = async () => {
@@ -16,13 +34,22 @@
                 var prediction = document.getElementById("prediction")
                 var resp = await response.text()
                 
+                let i = 0;
                 resp.split("\n").forEach(element => {
                     let pred = document.getElementById("predictions")
                     let div = document.createElement('div');
-                    div.innerHTML = `<h3>${element} <button>Подвергнуть цензуре (🗑️)</button><h3> `;
-                    pred.appendChild(div);        
+                    div.id = "element"+i
+                    div.innerHTML = `<h5 style = "color: rgb(246, 207, 158)">${element} <button onClick = removeElement(${i})>🗑️</button><h3> `;
+                    pred.appendChild(div);      
+                    i++
                 });
             }
+        }
+
+        async function removeElement(elementNumber){
+            let pred = document.getElementById("predictions")
+            elementToRemove = document.getElementById("element"+elementNumber)
+            pred.removeChild(elementToRemove)
         }
     </script>
 </html>

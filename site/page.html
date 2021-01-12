@@ -35,9 +35,9 @@
 
     <script>
         var el = document.getElementById("submitButton");
-        el.addEventListener("click", modifyText, false);
+        el.addEventListener("click", sendRequest, false);
 
-        async function modifyText(){
+        async function sendRequest(){
             var predictionInput = document.getElementById("prediction")
             let response = await fetch(`/addprediction?prediction=${predictionInput.value}`)
             if(response.ok){
