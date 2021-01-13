@@ -70,7 +70,7 @@ namespace predictor
                 endpoints.MapGet("/savepredictions", async context =>
                 {
                     var predictions = context.Request.Query["predictions"].First<string>(); 
-                    var predictiosArray = predictions.Split("\n");
+                    var predictiosArray = predictions.Split(" 🗑️");
                     var predictionManager = app.ApplicationServices.GetService<PredictionManager>();
 
                     predictionManager.SavePredictions(predictiosArray);
