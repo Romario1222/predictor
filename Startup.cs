@@ -66,6 +66,17 @@ namespace predictor
                     string page = await File.ReadAllTextAsync("site/adminPage.html");
                     await context.Response.WriteAsync(page);
                 });
+
+                endpoints.MapGet("/savepredictions", async context =>
+                {
+                    var predictions = context.Request.Query["predictions"].First<string>(); 
+                    var predictiosArray = predictions.Split("\n");
+                    var predictionManager = app.ApplicationServices.GetService<PredictionManager>();
+
+                    predictionManager.SavePredictions(predictiosArray);
+
+                    await Task.Run(() => {});
+                });
             });
         }
     }

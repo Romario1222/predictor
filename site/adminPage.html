@@ -22,9 +22,8 @@
         <br>
         <div id = "predictions"></div>
         <br>
-        <button>Сохранить текущий список</button>
+        <button onclick="savePredictions()">Сохранить текущий список</button>
         </div>
-
     </body>
 
     <script>
@@ -39,7 +38,7 @@
                     let pred = document.getElementById("predictions")
                     let div = document.createElement('div');
                     div.id = "element"+i
-                    div.innerHTML = `<h5 style = "color: rgb(246, 207, 158)">${element} <button onClick = removeElement(${i})>🗑️</button><h3> `;
+                    div.innerHTML = `<h5 style = "color: rgb(246, 207, 158)">${element} <button onClick = removeElement(${i})>🗑️</button><h3>`;
                     pred.appendChild(div);      
                     i++
                 });
@@ -50,6 +49,19 @@
             let pred = document.getElementById("predictions")
             elementToRemove = document.getElementById("element"+elementNumber)
             pred.removeChild(elementToRemove)
+        }
+
+        async function savePredictions(){
+            var predictions = [].slice.call(document.getElementById("predictions").children);
+            let predictionsString = ""
+            predictions.forEach(child =>{
+                predictionsString = predictionsString + '\n' + child.innerText
+            })
+
+            let response = await fetch(`/savePredictions?predictions=${predictionsString}`)
+            if(response.ok){
+                window.location.reload()
+            }
         }
     </script>
 </html>

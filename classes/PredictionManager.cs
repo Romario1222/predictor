@@ -37,5 +37,13 @@ namespace predictor
         public List<string> GetCurrentPredictions(){
             return predictions;
         }
+
+        public void SavePredictions(string[] predictiosArray)
+        {
+            predictions.Clear();
+            foreach(var prediction in predictiosArray){
+                predictions.Add(prediction);
+            }
+        }
     } 
 }
