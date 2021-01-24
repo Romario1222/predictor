@@ -6,6 +6,7 @@ namespace predictor
     public class PredictionManager
     {
         List<string> predictions = new List<string>();
+        Random rnd = new Random();
 
         public PredictionManager()
         {
@@ -28,7 +29,7 @@ namespace predictor
             {
                 return "Нет предсказаний для тебя";
             }
-            Random rnd = new Random();
+            
             int predictionNumber = rnd.Next(0, predictions.Count);
             string prediction = predictions[predictionNumber];
             return prediction;
